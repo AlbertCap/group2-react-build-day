@@ -7,6 +7,7 @@ export default function FortuneCard({ fortuneId = 1 }) {
 
     useEffect(() => {
         const audio = new Audio('src/sound/chinese-meme-song.mp3');
+        audio.volume = 0.3;
         audio.play().catch(error => console.log("Audio play error:", error));
 
         return () => {
