@@ -26,7 +26,7 @@ function App() {
           <SiumsiCup siumSiClick={siumSiClick} setSiumSiClick={setSiumSiClick} currentFortune={currentFortune} setCurrentFortune={setCurrentFortune}/>
         </section>
 
-        <section className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200 min-h-[420px]">
+        <section className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200 min-h-105">
           {/* Tab Menu Bar */}
           <div className="flex border-b border-amber-200 px-5 mb-4 text-sm font-medium justify-between">
             <button

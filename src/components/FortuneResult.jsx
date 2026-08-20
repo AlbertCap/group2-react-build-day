@@ -19,7 +19,7 @@ export default function FortuneResult({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+    <div className="bg-white border border-gray-200 rounded-lg p-3 shadow-sm">
       <FortuneCard fortuneId={fortuneId}/>
 
       <div className="flex gap-3 justify-center flex-wrap mt-4">
