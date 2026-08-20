@@ -1,14 +1,22 @@
-import { useState } from "react";
-import SiumsiCup from './components/SiumsiCup'
+import { useState, useEffect } from "react";
+import SiumsiCup from "./components/SiumsiCup";
 import FortuneResult from "./components/FortuneResult";
-
-
+import FortuneHistory from "./components/FortuneHistory";
 
 function App() {
   const [siumSiClick, setSiumSiClick] = useState(false);
   const [currentFortune, setCurrentFortune] = useState(0);
 
   const [activeTab, setActiveTab] = useState("now");
+
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    if (currentFortune !== 0) {
+      setHistory((prevHistory) => [currentFortune, ...prevHistory]);
+    }
+  }, [currentFortune]);
+
   return (
     <div className="min-h-screen bg-amber-50 p-4 md:p-8 text-stone-800">
       <header className="max-w-5xl mx-auto text-center mb-8">
@@ -20,13 +28,18 @@ function App() {
         </p>
       </header>
 
-      <main className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 items-start">
+      <main className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6">
         <section className="w-full md:w-2/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200">
           {/* ซ้าย */}
-          <SiumsiCup siumSiClick={siumSiClick} setSiumSiClick={setSiumSiClick} currentFortune={currentFortune} setCurrentFortune={setCurrentFortune}/>
+          <SiumsiCup
+            siumSiClick={siumSiClick}
+            setSiumSiClick={setSiumSiClick}
+            currentFortune={currentFortune}
+            setCurrentFortune={setCurrentFortune}
+          />
         </section>
 
-        <section className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200 min-h-105">
+        <section className="w-full overflow-hidden md:w-1/3 max-h-[590px] bg-white p-6 rounded-2xl shadow-md border border-amber-200">
           {/* Tab Menu Bar */}
           <div className="flex border-b border-amber-200 px-5 mb-4 text-sm font-medium justify-between">
             <button
@@ -63,19 +76,23 @@ function App() {
 
           {/* ส่วนแสดงเนื้อหาตาม Tab */}
           <div>
-            {activeTab === "now" && <FortuneResult
-        fortuneId={currentFortune}  // ← ทดสอบ ID 1
-        onAddToFavorite={(fortune) => console.log('Added:', fortune)}
-        favorites={[]}
-      />}
-            {activeTab === "history" && (
-              <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีประวัติ</p>
+            {activeTab === "now" && (
+              <FortuneResult
+                fortuneId={currentFortune} // ← ทดสอบ ID 1
+                onAddToFavorite={(fortune) => console.log("Added:", fortune)}
+                favorites={[]}
+              />
             )}
+
+            {/* หน้า History */}
+            {activeTab === "history" && <FortuneHistory history={history} />}
+
             {activeTab === "favorite" && (
-              <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีรายการโปรด</p>
+              <p className="text-center text-stone-400 py-6 text-sm">
+                ยังไม่มีรายการโปรด
+              </p>
             )}
           </div>
-          
         </section>
       </main>
     </div>

@@ -18,8 +18,8 @@ export default function SiumsiCup({
           onClick={() => {
             setSiumSiClick(true);
             setTimeout(() => setSiumSiClick(false), 2000);
-            setCurrentFortune(Math.floor(Math.random()*27+1))
-            console.log(currentFortune)
+            setCurrentFortune(Math.floor(Math.random() * 27 + 1));
+            console.log(currentFortune);
           }}
         >
           Click for Siumci
