@@ -16,7 +16,7 @@ export default function FavoriteCard({ favorites , onRemoveFavorite }) {
               </div>
               <button
                 type="button"
-                className="remove-button"
+                className="remove-button hover:cursor-pointer"
                 onClick={() => onRemoveFavorite(fortune.id)}
                 aria-label={`ลบใบที่ ${fortune.id} ออกจากรายการโปรด`}
               >

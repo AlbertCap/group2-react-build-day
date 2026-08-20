@@ -95,8 +95,8 @@ function App() {
               !siumSiClick ? (
                 <FortuneResult
                   fortuneId={currentFortune} // ← ทดสอบ ID 1
-                  onAddToFavorite={(fortune) => console.log("Added:", fortune)}
-                  favorites={[]}
+                  onAddToFavorite={handleAddToFavorite}
+                  favorites={favorites}
                 />
               ) : (
                 <p className="text-center text-black py-6 text-sm animate-pulse">
