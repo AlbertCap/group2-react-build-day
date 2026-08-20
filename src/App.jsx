@@ -1,11 +1,13 @@
 import './App.css'
+import SiumsiCup from './components/SiumsiCup'
 
 function App() {
 
   return (
     <>
     <div>
-      <h1 className='bg-amber-500'>Hello World</h1>
+      <SiumsiCup />
+
     </div>
     </>
   )
