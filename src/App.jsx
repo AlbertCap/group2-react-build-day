@@ -1,6 +1,12 @@
 import { useState } from "react";
+import SiumsiCup from './components/SiumsiCup'
+
+
 
 function App() {
+  const [siumSiClick, setSiumSiClick] = useState(false);
+  const [currentFortune, setCurrentFortune] = useState(0);
+
   const [activeTab, setActiveTab] = useState("now");
   return (
     <div className="min-h-screen bg-amber-50 p-4 md:p-8 text-stone-800">
@@ -16,6 +22,7 @@ function App() {
       <main className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 items-start">
         <section className="w-full md:w-2/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200">
           {/* ซ้าย */}
+          <SiumsiCup siumSiClick={siumSiClick} setSiumSiClick={setSiumSiClick} currentFortune={currentFortune} setCurrentFortune={setCurrentFortune}/>
         </section>
 
         <section className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200 min-h-[420px]">
