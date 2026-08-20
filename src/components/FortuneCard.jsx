@@ -37,6 +37,7 @@ export default function FortuneCard({ fortuneId = 1 }) {
             <div className="text-xs text-[#8c6239] font-serif tracking-widest opacity-80 mt-2">
                  ⛩️ ไม่มีข่าวดีหรือร้าย..มีแค่ข่าว.. 🐉  <br /> — อูเกว 🐢 —
             </div>
+
         </div>
     );
 }
