@@ -6,7 +6,7 @@ export default function FortuneCard({ fortuneId = 1 }) {
 
     return (
         /* การ์ดเซียมซี */
-        <div className="bg-[#f4ebd0] border-4 border-[#8c6239] rounded-xl p-8 w-80 min-h-105 shadow-2xl flex flex-col items-center justify-between text-center relative overflow-hidden bg-blend-multiply">
+        <div className="bg-[#f4ebd0] border-4 border-[#8c6239] rounded-xl p-8 w-full max-w-80 mx-auto min-h-105 shadow-2xl flex flex-col items-center justify-between text-center relative overflow-hidden bg-blend-multiply">
 
             <div className="absolute inset-0 border border-[#d4c39d] pointer-events-none m-2 rounded-lg"></div>
 
