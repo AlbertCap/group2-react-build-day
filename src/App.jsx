@@ -1,11 +1,12 @@
 import './App.css'
+import FortuneResult from './components/FortuneResult'
 
 function App() {
 
   return (
     <>
     <div>
-      <h1 className='bg-amber-500'>Hello World</h1>
+      <FortuneResult/>
     </div>
     </>
   )
