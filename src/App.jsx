@@ -64,7 +64,7 @@ function App() {
           {/* ส่วนแสดงเนื้อหาตาม Tab */}
           <div>
             {activeTab === "now" && <FortuneResult
-        fortuneId={6}  // ← ทดสอบ ID 1
+        fortuneId={8}  // ← ทดสอบ ID 1
         onAddToFavorite={(fortune) => console.log('Added:', fortune)}
         favorites={[]}
       />}
