@@ -1,14 +1,32 @@
 import { useState } from "react";
 import SiumsiCup from './components/SiumsiCup'
 import FortuneResult from "./components/FortuneResult";
-
+import FavoriteCard from "./components/FavoriteCard";
 
 
 function App() {
   const [siumSiClick, setSiumSiClick] = useState(false);
   const [currentFortune, setCurrentFortune] = useState(0);
+  const [favorites, setFavorites] = useState([]);
 
   const [activeTab, setActiveTab] = useState("now");
+
+  const handleAddToFavorite = (fortune) => {
+    setFavorites((previousFavorites) => {
+      if (previousFavorites.some((favorite) => favorite.id === fortune.id)) {
+        return previousFavorites;
+      }
+
+      return [...previousFavorites, fortune];
+    });
+  };
+
+  const handleRemoveFavorite = (fortuneId) => {
+    setFavorites((previousFavorites) =>
+      previousFavorites.filter((fortune) => fortune.id !== fortuneId)
+    );
+  };
+
   return (
     <div className="min-h-screen bg-amber-50 p-4 md:p-8 text-stone-800">
       <header className="max-w-5xl mx-auto text-center mb-8">
@@ -57,25 +75,27 @@ function App() {
                   : "text-stone-400 hover:text-stone-600"
               }`}
             >
-              โปรด
+              บันทึกใบเซียมซี
             </button>
           </div>
 
           {/* ส่วนแสดงเนื้อหาตาม Tab */}
           <div>
             {activeTab === "now" && <FortuneResult
-        fortuneId={currentFortune}  // ← ทดสอบ ID 1
-        onAddToFavorite={(fortune) => console.log('Added:', fortune)}
-        favorites={[]}
-      />}
+              fortuneId={currentFortune}
+              onAddToFavorite={handleAddToFavorite}
+              favorites={favorites}
+            />}
             {activeTab === "history" && (
               <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีประวัติ</p>
             )}
             {activeTab === "favorite" && (
-              <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีรายการโปรด</p>
+              <FavoriteCard
+                favorites={favorites}
+                onRemoveFavorite={handleRemoveFavorite}
+              /> 
             )}
           </div>
-          
         </section>
       </main>
     </div>
