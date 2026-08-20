@@ -39,36 +39,33 @@ function App() {
           />
         </section>
 
-        <section className="w-full overflow-hidden md:w-1/3 max-h-[590px] bg-white p-6 rounded-2xl shadow-md border border-amber-200">
+        <section className="w-full overflow-hidden md:w-1/3 max-h-147.5 bg-white p-6 rounded-2xl shadow-md border border-amber-200">
           {/* Tab Menu Bar */}
           <div className="flex border-b border-amber-200 px-5 mb-4 text-sm font-medium justify-between">
             <button
               onClick={() => setActiveTab("now")}
-              className={`pb-2 px-3 transition-all cursor-pointer ${
-                activeTab === "now"
+              className={`pb-2 px-3 transition-all cursor-pointer ${activeTab === "now"
                   ? "border-b-2 border-red-800 text-red-800 font-bold"
                   : "text-stone-400 hover:text-stone-600"
-              }`}
+                }`}
             >
               ล่าสุด
             </button>
             <button
               onClick={() => setActiveTab("history")}
-              className={`pb-2 px-3 transition-all cursor-pointer ${
-                activeTab === "history"
+              className={`pb-2 px-3 transition-all cursor-pointer ${activeTab === "history"
                   ? "border-b-2 border-red-800 text-red-800 font-bold"
                   : "text-stone-400 hover:text-stone-600"
-              }`}
+                }`}
             >
               ประวัติ
             </button>
             <button
               onClick={() => setActiveTab("favorite")}
-              className={`pb-2 px-3 transition-all cursor-pointer ${
-                activeTab === "favorite"
+              className={`pb-2 px-3 transition-all cursor-pointer ${activeTab === "favorite"
                   ? "border-b-2 border-red-800 text-red-800 font-bold"
                   : "text-stone-400 hover:text-stone-600"
-              }`}
+                }`}
             >
               โปรด
             </button>
@@ -77,11 +74,17 @@ function App() {
           {/* ส่วนแสดงเนื้อหาตาม Tab */}
           <div>
             {activeTab === "now" && (
-              <FortuneResult
-                fortuneId={currentFortune} // ← ทดสอบ ID 1
-                onAddToFavorite={(fortune) => console.log("Added:", fortune)}
-                favorites={[]}
-              />
+              !siumSiClick ? (
+                <FortuneResult
+                  fortuneId={currentFortune} // ← ทดสอบ ID 1
+                  onAddToFavorite={(fortune) => console.log("Added:", fortune)}
+                  favorites={[]}
+                />
+              ) : (
+                <p className="text-center text-black py-6 text-sm animate-pulse">
+                  กำลังสุ่มผลลัพธ์...
+                </p>
+              )
             )}
 
             {/* หน้า History */}

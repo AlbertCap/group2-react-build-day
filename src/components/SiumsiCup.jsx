@@ -1,28 +1,32 @@
 export default function SiumsiCup({
   siumSiClick,
   setSiumSiClick,
-  currentFortune,
   setCurrentFortune,
 }) {
+
+  const handleSiumsiClick = () => {
+    setSiumSiClick(true);
+
+    const newFortuneId = Math.floor(Math.random() * 27 + 1);
+
+    setTimeout(() => {
+
+      setCurrentFortune(newFortuneId);
+
+      setSiumSiClick(false);
+
+      const audio = new Audio('src/sound/chinese-meme-song.mp3');
+      audio.volume = 0.3;
+      audio.play().catch(error => console.log("Audio play error:", error));
+    }, 2000);
+  };
+
   return (
     <>
-      <div className="flex flex-col w-full border-black border-solid border-2 rounded-2xl p-2 justify-center items-center text-center">
+      <div className="flex flex-col w-full h-full border-black border-solid border-2 rounded-2xl p-2 justify-center items-center text-center">
         <h1 className="text-2xl font-bold">SiumciCup</h1>
-        <img
-          className={`${siumSiClick ? "animate-wiggle" : ""}`}
-          alt="Siumci cup picture"
-          src="https://horoscope.kapook.com/fortune/assets/images/seamsi.png"
-        />
-        <button
-          className="bg-teal-300 p-2 rounded-md m-4 hover:cursor-pointer"
-          onClick={() => {
-            setSiumSiClick(true);
-            setTimeout(() => setSiumSiClick(false), 2000);
-            setCurrentFortune(Math.floor(Math.random() * 27 + 1));
-            console.log(currentFortune);
-          }}
-        >
-          {siumSiClick ? (
+        <a onClick={handleSiumsiClick}>
+            {siumSiClick ? (
             <>
               <div className="flex flex-col fixed w-full h-full bg-gray-600 top-0 left-0 opacity-50"></div>
               <div className="fixed border-2 border-amber-300 top-1/2 left-1/2 z-10 -translate-1/2 bg-amber-400 p-4 rounded-md font-bold text-2xl">
@@ -32,8 +36,12 @@ export default function SiumsiCup({
           ) : (
             ""
           )}
-          Click for Siumci
-        </button>
+          <img
+          className={`${siumSiClick ? "animate-wiggle" : ""} hover:cursor-pointer hover:scale-110`}
+          alt="Siumci cup picture"
+          src="https://horoscope.kapook.com/fortune/assets/images/seamsi.png"
+        />
+        </a>
       </div>
     </>
   );
