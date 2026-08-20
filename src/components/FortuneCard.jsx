@@ -1,12 +1,24 @@
+import { useEffect } from 'react'
 import { fortunes } from '../Data/fortunesData';
 
 export default function FortuneCard({ fortuneId = 1 }) {
 
     const currentFortune = fortunes.find(item => item.id === fortuneId) || fortunes[0];
 
+    useEffect(() => {
+        const audio = new Audio('src/sound/chinese-meme-song.mp3');
+        audio.volume = 0.3;
+        audio.play().catch(error => console.log("Audio play error:", error));
+
+        return () => {
+            audio.pause();
+            audio.currentTime = 0;
+        };
+    }, [fortuneId]);
+
     return (
         /* การ์ดเซียมซี */
-        <div className="bg-[#f4ebd0] border-4 border-[#8c6239] rounded-xl p-8 w-80 min-h-105 shadow-2xl flex flex-col items-center justify-between text-center relative overflow-hidden bg-blend-multiply">
+        <div className="bg-[#f4ebd0] border-4 border-[#8c6239] rounded-xl p-4 w-full max-w-80 mx-auto min-h-105 shadow-2xl flex flex-col items-center justify-between text-center relative overflow-hidden bg-blend-multiply">
 
             <div className="absolute inset-0 border border-[#d4c39d] pointer-events-none m-2 rounded-lg"></div>
 
@@ -25,6 +37,7 @@ export default function FortuneCard({ fortuneId = 1 }) {
             <div className="text-xs text-[#8c6239] font-serif tracking-widest opacity-80 mt-2">
                  ⛩️ ไม่มีข่าวดีหรือร้าย..มีแค่ข่าว.. 🐉  <br /> — อูเกว 🐢 —
             </div>
+
         </div>
     );
 }

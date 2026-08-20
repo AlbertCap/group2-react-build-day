@@ -1,8 +1,8 @@
-import { useState } from "react";
-import SiumsiCup from './components/SiumsiCup'
+import { useState, useEffect } from "react";
+import SiumsiCup from "./components/SiumsiCup";
 import FortuneResult from "./components/FortuneResult";
 import FavoriteCard from "./components/FavoriteCard";
-
+import FortuneHistory from "./components/FortuneHistory";
 
 function App() {
   const [siumSiClick, setSiumSiClick] = useState(false);
@@ -10,6 +10,14 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   const [activeTab, setActiveTab] = useState("now");
+
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    if (currentFortune !== 0) {
+      setHistory((prevHistory) => [currentFortune, ...prevHistory]);
+    }
+  }, [currentFortune]);
 
   const handleAddToFavorite = (fortune) => {
     setFavorites((previousFavorites) => {
@@ -38,13 +46,18 @@ function App() {
         </p>
       </header>
 
-      <main className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6 items-start">
+      <main className="max-w-5xl mx-auto flex flex-col md:flex-row gap-6">
         <section className="w-full md:w-2/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200">
           {/* ซ้าย */}
-          <SiumsiCup siumSiClick={siumSiClick} setSiumSiClick={setSiumSiClick} currentFortune={currentFortune} setCurrentFortune={setCurrentFortune}/>
+          <SiumsiCup
+            siumSiClick={siumSiClick}
+            setSiumSiClick={setSiumSiClick}
+            currentFortune={currentFortune}
+            setCurrentFortune={setCurrentFortune}
+          />
         </section>
 
-        <section className="w-full md:w-1/3 bg-white p-6 rounded-2xl shadow-md border border-amber-200 min-h-[420px]">
+        <section className="w-full overflow-hidden md:w-1/3 max-h-[590px] bg-white p-6 rounded-2xl shadow-md border border-amber-200">
           {/* Tab Menu Bar */}
           <div className="flex border-b border-amber-200 px-5 mb-4 text-sm font-medium justify-between">
             <button
@@ -85,10 +98,9 @@ function App() {
               fortuneId={currentFortune}
               onAddToFavorite={handleAddToFavorite}
               favorites={favorites}
-            />}
-            {activeTab === "history" && (
-              <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีประวัติ</p>
-            )}
+      />}   {/* หน้า History */}
+            {activeTab === "history" && <FortuneHistory history={history} />}
+
             {activeTab === "favorite" && (
               <FavoriteCard
                 favorites={favorites}
