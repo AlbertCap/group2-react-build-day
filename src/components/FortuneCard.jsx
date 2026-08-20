@@ -1,8 +1,8 @@
-import { fortunes } from '../src/Data/fortunesData';
+import { fortunes } from '../Data/fortunesData';
 
-export default function FortuneCard({ selectedId = 1 }) {
+export default function FortuneCard({ fortuneId = 1 }) {
 
-    const currentFortune = fortunes.find(item => item.id === selectedId) || fortunes[0];
+    const currentFortune = fortunes.find(item => item.id === fortuneId) || fortunes[0];
 
     return (
         /* การ์ดเซียมซี */

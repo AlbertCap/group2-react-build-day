@@ -1,4 +1,5 @@
 import { fortunes } from "../Data/fortunesData";
+import FortuneCard from "./FortuneCard";
 
 export default function FortuneResult({ 
   fortuneId, 
@@ -19,10 +20,7 @@ export default function FortuneResult({
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold mt-3 text-gray-900">{fortune.title}</h2>
-        <p className="text-gray-700 mt-4 whitespace-pre-wrap leading-relaxed">{fortune.text}</p>
-      </div>
+      <FortuneCard fortuneId={fortuneId}/>
 
       <div className="flex gap-3 justify-center flex-wrap">
         <button 
