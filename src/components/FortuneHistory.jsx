@@ -11,7 +11,7 @@ const FortuneHistory = ({ history }) => {
   }
 
   return (
-    <div className="flex flex-col max-h-[480px] gap-3 overflow-y-auto pr-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+    <div className="flex flex-col max-h-120 gap-3 overflow-y-auto pr-1 [scrollbar-none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
       {history.map((fortuneId, index) => {
         const item = fortunes.find((f) => f.id === fortuneId);
 
@@ -25,7 +25,7 @@ const FortuneHistory = ({ history }) => {
             <div className="bg-red-700 text-white text-center px-4 py-1.5 [clip-path:polygon(12px_0%,calc(100%-12px)_0%,100%_50%,calc(100%-12px)_100%,12px_100%,0%_50%)]">
               ใบที่ {item.id} : {item.title}
             </div>
-            <p className="text-stone-600 text-xs mt-1 line-clamp-4 mt-2">
+            <p className="text-stone-600 text-xs line-clamp-4 mt-2">
               {item.text}
             </p>
           </div>

@@ -1,20 +1,8 @@
-import { useEffect } from 'react'
 import { fortunes } from '../Data/fortunesData';
 
 export default function FortuneCard({ fortuneId = 1 }) {
 
     const currentFortune = fortunes.find(item => item.id === fortuneId) || fortunes[0];
-
-    useEffect(() => {
-        const audio = new Audio('src/sound/chinese-meme-song.mp3');
-        audio.volume = 0.3;
-        audio.play().catch(error => console.log("Audio play error:", error));
-
-        return () => {
-            audio.pause();
-            audio.currentTime = 0;
-        };
-    }, [fortuneId]);
 
     return (
         /* การ์ดเซียมซี */
