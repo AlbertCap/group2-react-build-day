@@ -25,7 +25,7 @@ export default function FortuneResult({
       <div className="flex gap-3 justify-center flex-wrap mt-4">
         <button 
           onClick={handleAddFavorite}
-          className={`px-4 py-2 rounded transition ${
+          className={`px-4 py-2 rounded transition hover:cursor-pointer ${
             isFavorite 
               ? 'bg-red-500 text-white hover:bg-red-600' 
               : 'bg-gray-300 text-gray-900 hover:bg-gray-400'
