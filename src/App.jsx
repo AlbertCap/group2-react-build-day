@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SiumsiCup from './components/SiumsiCup'
+import FortuneResult from "./components/FortuneResult";
 
 
 
@@ -59,6 +60,22 @@ function App() {
               โปรด
             </button>
           </div>
+
+          {/* ส่วนแสดงเนื้อหาตาม Tab */}
+          <div>
+            {activeTab === "now" && <FortuneResult
+        fortuneId={currentFortune}  // ← ทดสอบ ID 1
+        onAddToFavorite={(fortune) => console.log('Added:', fortune)}
+        favorites={[]}
+      />}
+            {activeTab === "history" && (
+              <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีประวัติ</p>
+            )}
+            {activeTab === "favorite" && (
+              <p className="text-center text-stone-400 py-6 text-sm">ยังไม่มีรายการโปรด</p>
+            )}
+          </div>
+          
         </section>
       </main>
     </div>
