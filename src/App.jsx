@@ -1,11 +1,12 @@
 import { useState } from "react";
 import SiumsiCup from './components/SiumsiCup'
 
-  const [siumSiClick, setSiumSiClick] = useState(false);
-  const [currentFortune, setCurrentFortune] = useState(0);
 
 
 function App() {
+  const [siumSiClick, setSiumSiClick] = useState(false);
+  const [currentFortune, setCurrentFortune] = useState(0);
+
   const [activeTab, setActiveTab] = useState("now");
   return (
     <div className="min-h-screen bg-amber-50 p-4 md:p-8 text-stone-800">
