@@ -22,7 +22,7 @@ export default function FortuneResult({
     <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
       <FortuneCard fortuneId={fortuneId}/>
 
-      <div className="flex gap-3 justify-center flex-wrap">
+      <div className="flex gap-3 justify-center flex-wrap mt-4">
         <button 
           onClick={handleAddFavorite}
           className={`px-4 py-2 rounded transition ${
